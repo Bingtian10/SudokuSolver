@@ -10,7 +10,7 @@ from pygame.locals import (
         KEYDOWN,
         QUIT,
         K_RETURN,
-        K_r,
+        K_g,
 )
 
 class Game():
@@ -58,7 +58,7 @@ class Game():
                     self.screen.blit(text, (p[0]+j*50+20, p[1]+i*50+20))
 
     def instructions(self):
-        msg = "Press r to generate a new board, Press enter/return to solve the board"
+        msg = "Press g to generate a new board, Press enter/return to solve the board"
         text = self.font.render(msg,1, (255,255,255))
         self.screen.blit(text, (190, 540))
 
@@ -97,7 +97,7 @@ class Game():
         return True
 
     def countSol(self, board):
-        #pygame.event.clear()
+        #pygame.event.pump()
         for i in range(9):
             for j in range(9):
                 if board[i][j] == 0:
@@ -176,7 +176,7 @@ while running:
                 running = False
             if event.key == K_RETURN:
                 game.solve(True)
-            if event.key == K_r:
+            if event.key == K_g:
                 game.generateRandomBoard()
 
         elif event.type == pygame.QUIT:
