@@ -38,16 +38,16 @@ To validate whether a number is legal in current board:
 
 ### Random Board Generation
 For each 3x3 subboard:
-  pick a position in the 3x3 suboard
-  generate a list of all potential number of that position, sample one from the list, and place it at the position
+  - pick a position in the 3x3 suboard
+  - generate a list of all potential number of that position, sample one from the list, and place it at the position
 
 Invoke Solve(board) to solve the current board
 Generate a list of all positions in the board, randomly shuffle it
 For each position:
-  Remove the current placed value
-  count number of solutions the board has after removing the value
-  If the board has **exactly one** solution, move to next position
-  Else, we place back the value that we removed, move to next position
+  - Remove the current placed value
+  - count number of solutions the board has after removing the value
+  - If the board has **exactly one** solution, move to next position
+  - Else, we place back the value that we removed, move to next position
   
 
 
@@ -68,6 +68,7 @@ Most of time the board should be generated within seconds.
 
 
 ## Analysis
+In the following analysis, n denotes number of positions of the board.
 
 ### Time Complexity
 Since each empty space has up to 9 solutions and there are O(n) empty spaces in the worst cases. 
