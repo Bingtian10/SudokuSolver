@@ -36,7 +36,7 @@ To validate whether a number is legal in current board:
   - check the column if there's a same number
   - check the row if there's a same number
 
-### Random Board Generation
+### Random Unique Board Generation
 For each 3x3 subboard:
   - pick a position in the 3x3 suboard
   - generate a list of all potential number of that position, sample one from the list, and place it at the position
@@ -64,6 +64,18 @@ Press "g" to generate a new board
 Sometimes it might take minutes to generate a random board, because there's
 some board that's inherently hard to solve and might take minutes to be solved.
 Most of time the board should be generated within seconds.
+
+Random Board 1:
+![randomly generated unique solution board](board1.png)
+
+Board 1 solution:
+![solution of random board 1](board1solution.png)
+
+Random Board 2:
+![randomly generated unique solution board](board2.png)
+
+Board 1 solution:
+![solution of random board 2](board2solution.png)
 
 
 
