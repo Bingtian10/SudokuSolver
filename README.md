@@ -3,9 +3,22 @@ Given a nxn sudoku board, we can use backtrack/depth first search to recursively
 all possible solution. Here I used 9x9 as an example for convenience, as the algorithm runtime
 grow exponentially with larger board.
 
+Here I include the solveer logic in Java, Python and make a GUI program in python.
+
+# Prerequisite
+To run the python program, make sure you install pygame in your local environment
+```
+python3 -m pip install -U pygame --user
+```
+To see if pygame is installed successfully, run the example alien game in following:
+```
+python3 -m pygame.examples.aliens
+```
+For more information, [Here](https://www.pygame.org/wiki/GettingStarted).
+
 ## Algorithm
 
-Solve(board)
+### Solve(board)
 
 For each empty space (i,j) on the board:
   - Try to place number 1...9 on the (i,j) position.
@@ -16,44 +29,43 @@ For each empty space (i,j) on the board:
 
 We find the solution if we manage to fill every empty space on the board and reach here.
 
-Validate(board)
+### Validate(board)
 
 To validate whether a number is legal in current board:
   - check the 3x3 sub-boxes if there's a same number
   - check the column if there's a same number
   - check the row if there's a same number
 
+### Random Board Generation
+For each 3x3 subboard:
+  pick a position in the 3x3 suboard
+  generate a list of all potential number of that position, sample one from the list, and place it at the position
+
+Invoke Solve(board) to solve the current board
+Generate a list of all positions in the board, randomly shuffle it
+For each position:
+  Remove the current placed value
+  count number of solutions the board has after removing the value
+  If the board has **exactly one** solution, move to next position
+  Else, we place back the value that we removed, move to next position
+  
+
+
 ## Examples
 
-I grab a couple randomly generated sudoku board online and try it with the algorithm.
+To run the game, simply run:
+```
+python3 sudoku.py
+```
 
-The site used to generate sudoku board and the solution. [Here!](https://www.sudokuweb.org/) 
+Press "Enter/Return" to solve the board
+Press "g" to generate a new board
 
-#### Sample1
-![Image of a 9x9 sudoku board](sample1.png)
+Sometimes it might take minutes to generate a random board, because there's
+some board that's inherently hard to solve and might take minutes to be solved.
+Most of time the board should be generated within seconds.
 
-This is a sample unsolved board.
 
-![Image of the result return by algorithm](result1.png)
-
-This is the result return by the code.
-
-![Image of the result given by the website](sample1solution.png)
-
-The solution given by online site.
-
-#### Sample2
-![Image of a 9x9 sudoku board](sample2.png)
-
-This is a sample unsolved board.
-
-![Image of the result return by algorithm](result2.png)
-
-This is the result return by the code.
-
-![Image of the result given by the website](sample2solution.png)
-
-The solution given by online site.
 
 ## Analysis
 
